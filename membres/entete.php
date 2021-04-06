@@ -21,11 +21,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-            <a class="nav-link" href="connexion.php">Connexion</a>
-            <a class="nav-link" href="inscription.php">Inscription</a>
-            <a class="nav-link" href="#" ><i class="fab fa-2x fa-line"></i></a>
-        </div>
-        </div>
+        <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
+      </div>
+      <div class="navbar-nav" style="margin-left: 80%;">
+        <a class="btn btn-success" href="connexion.php">Connexion</a><br>
+        <a class="btn btn-primary mx-1" href="inscription.php">Inscription</a>
+        <?php 
+        if(isset($_SESSION['pseudo']) && !empty($_SESSION['pseudo'])){
+          $pseudo=$_SESSION['pseudo'];
+            ?>
+            <a href="profile.php?pseudo=<?=$pseudo;?>">Votre profil</a>
+            <?php
+        }
+?>
     </div>
-    </nav>
+  </div>
+</nav>
