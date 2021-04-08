@@ -1,5 +1,6 @@
 <?php
 require_once 'entete.php';
+require_once 'modeles/modeles.php';
   ?>
   <h1 class="text-center">Bienvenue sur Quizz Mania!</h1>
 
