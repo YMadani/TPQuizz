@@ -1,5 +1,5 @@
-<?php require_once 'entete.php';
-
+<?php
+ require_once 'entete.php';
 ?>
 <h1 class="text-center my-2"> Formulaire d'inscription</h1>
 <div class="container">
