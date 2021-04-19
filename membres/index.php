@@ -30,6 +30,7 @@ $rep = new Reponse(1);
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
+              <a class="btn btn-primary" href="creerQuizz.php">Créer un nouveau quizz</a>
             </div>
           </div>
       </div>

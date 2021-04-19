@@ -12,7 +12,7 @@ class Quizz extends modeles
 
             if($idQuizz !== null){
 
-                $requete = $this->getBdd()->prepare("SELECT titre, idCategorie FROM quizz WHERE idQuizz = ?");
+                $requete = $this->getBdd()->prepare("SELECT nomQuizz, idCat FROM quizz WHERE idQuizz = ?");
                 $requete->execute([$idQuizz]);
                 $quizz = $requete->fetch(PDO::FETCH_ASSOC);
 
@@ -21,13 +21,13 @@ class Quizz extends modeles
                 $questions = $requete->fetchAll(PDO::FETCH_ASSOC);
 
                 $this->idQuizz = $idQuizz;
-                $this->titre  = $quizz["titre"];
-                $this->categorie = new Categorie($quizz["idCategorie"]);
+                $this->titre  = $quizz["nomQuizz"];
+                $this->categorie = new Categorie($quizz["idCat"]);
 
                 foreach( $questions as $question ){
 
                     $objetQuestion = new Question;
-                    $objetQuestion->initialiserQuestion($question["idQuestion"],$question["question"]);
+                    $objetQuestion->initialiserQuestion($question["idQuestion"],$question["nomQuestion"]);
                     $this->questions[] = $objetQuestion;
                 }
             }
@@ -62,5 +62,14 @@ class Quizz extends modeles
         public function removeQuestion($idQuestion){
             $requete=$this->getBdd()->prepare("DELETE FROM questions WHERE idQuestion = ? ");
             $requete->execute([$idQuestion]);
+        }
+        public function insertQuizz(){
+            $requete=$this->getBdd()->prepare("INSERT INTO quizz (nomQuizz, idUser, idCat) VALUES (?,?,?)");
+            $requete->execute();
+        }
+        public function countId()
+        {
+            $requete=$this->getBdd()->prepare("SELECT count(idQuizz) FROM quizz");
+            $requete->execute();
         }
     }
