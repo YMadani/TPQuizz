@@ -1,5 +1,5 @@
 <?php
-require_once 'modeles/modeles.php';
+require_once '../modeles/modeles.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

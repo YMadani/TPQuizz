@@ -1,34 +1,39 @@
 <?php
-class Utilisateur
+class Utilisateur extends modeles
 {
 //Propriétés
     protected $username;
-    protected $password;
     protected $reponse;
+    private $User;
 
-//Method
-    public function getUsername(){
-        return $this->username;
-    }
-
-
-    public function setUsername($newUsername){
-        $this->username = $newUsername;
-    }
-
-
-    public function setPassword($newPassword){
-        $this->password = $newPassword;
-        }
-    
-    public function setReponse($newReponse){
-        $this->reponse = $newReponse;
-        }
-
-    public function getUtilisateur(){
-        $sql = getBdd()->prepare("SELECT * FROM utilisateur");
+//Method UML comment schématiser des class
+    public function __construct()
+    {
+        $sql = $this->getBdd()->prepare("SELECT * FROM utilisateur");
         $sql->execute();
-        return $sql;
+        $User = $sql;
+
+        $this->User = $User;
+        $this->username=$User["nom"];
+    }
+
+    public function connexion($username,$password)
+    {
+        $sql = $this->getBdd()->prepare("SELECT * FROM utilisateur");
+        $sql->execute($username,$password);
+        $connexion = $sql;
+
+        $this->connexion = $connexion;
+
+    }
+    public function inscription($username,$password,$email,$idQsecrete,$Rsecrete)
+    {
+
+    }
+
+    public function getUtilisateur()
+    {
+        return $this->User;
     }
 }
 
