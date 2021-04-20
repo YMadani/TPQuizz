@@ -1,5 +1,6 @@
 <?php
-require_once 'modeles/modeles.php';
+require_once '../modeles/modeles.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +12,17 @@ require_once 'modeles/modeles.php';
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
     <title>Document</title>
 </head>
 <body class="gradiant">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"> 
+    <div id="cool" >
+    
+<span class="fas fa-2x fa-bars"></span>
+</div>
+        <a class="navbar-brand"  > 
             <img src="images/quizz.png"  width="40" height="34" class="d-inline-block align-text-top">
         Quizz Mania !</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,3 +46,36 @@ require_once 'modeles/modeles.php';
     </div>
   </div>
 </nav>
+<aside class="lemenu">
+  
+    <li>  
+      <span class="fas fa-user-circle couleur"></span>
+      <a href=""class="effect-1">
+        Profil
+      </a> 
+    </li>
+ 
+  
+    <li>
+      <span class="fas fa-user-friends couleur"></span>
+      <a href=""class="effect-1">
+      
+      Amis
+   </a> </li>
+  
+ <li>
+    <span class="fas fa-list couleur"></span>
+     <a href=""class="effect-1">
+     Créer un Quizz
+     </a>
+  </li>
+  
+  <li > 
+    <span class="fas fa-scroll couleur"></span>
+    <a href=""class="effect-1">
+      
+      Historique de Quizz
+    
+    </a>
+</li>
+</aside>
