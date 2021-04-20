@@ -62,10 +62,17 @@ public function __construct($idQuestion = null)
     {
         $this->idQuestion = $idQuestion;
     }
-    public function addReponse($reponse)
+    public function addReponseVrai($reponse, $statut, $i)
+    {
+        $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, Vrai, idQuestion) VALUES (?,?,?)");
+        $requete->execute([$reponse, $statut, $i]);
+
+        $this->reponses = $reponse;
+    }
+    public function addReponse($reponse, $i)
     {
         $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, idQuestion) VALUES (?,?)");
-        $requete->execute();
+        $requete->execute([$reponse, $i]);
 
         $this->reponses = $reponse;
     }

@@ -8,7 +8,6 @@ require_once '../modeles/modeles.php';
         $User = new Utilisateur();
         $VUser = $User->connexion($pseudo,$mdp);
         $erreurs  =  $User->getErreur();
-        print_r($VUser);
         if(empty($erreurs))
             {
                 $connexion = $User->getConnexion();

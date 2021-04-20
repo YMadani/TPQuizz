@@ -3,7 +3,6 @@ session_start();
 
 class modeles{
 
-
 protected function getBdd(){
     return new PDO('mysql:host=localhost;dbname=tpquizz;charset=utf8', 'root', '',[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 }

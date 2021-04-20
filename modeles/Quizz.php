@@ -60,9 +60,9 @@ class Quizz extends modeles
         public function setCategorie($Categorie){
             $this->categorie = $Categorie;
         }
-        public function addQuestion($question){
+        public function addQuestion($question,$idQuizz){
             $requete=$this->getBdd()->prepare("INSERT INTO questions (nomQuestion, idQuizz) VALUES (?,?)");
-            $requete->execute();
+            $requete->execute([$question, $idQuizz]);
 
             $this->questions = $question;
         }
@@ -70,14 +70,16 @@ class Quizz extends modeles
             $requete=$this->getBdd()->prepare("DELETE FROM questions WHERE idQuestion = ? ");
             $requete->execute([$idQuestion]);
         }
-        public function insertQuizz(){
+        public function insertQuizz($nomQuizz, $idCat, $idUser){
             $requete=$this->getBdd()->prepare("INSERT INTO quizz (nomQuizz, idUser, idCat) VALUES (?,?,?)");
-            $requete->execute();
+            $requete->execute([$nomQuizz, $idCat, $idUser]);
         }
         public function countId()
         {
-            $requete=$this->getBdd()->prepare("SELECT count(idQuizz) FROM quizz");
+            $requete=$this->getBdd()->prepare("SELECT * FROM quizz");
             $requete->execute();
+            $requete->fetchAll(PDO::FETCH_ASSOC);
+            return $requete->rowCount();
         }
         public function getAllQuizz()
         {
