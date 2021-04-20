@@ -6,7 +6,6 @@ $Quizzs = $Q->getAllQuizz();
   ?>
 
 
-  <h1 class="text-center underline">Bienvenue sur Quizz Mania!</h1>
 <?php
   if(isset($_GET["success"])&& $_GET['success'] == 1 ){
     ?>
@@ -16,9 +15,7 @@ $Quizzs = $Q->getAllQuizz();
       <?php
     }
     ?>
-  <div class=''>
-    <h1 class="text-center underline effect-2">Bienvenue sur Quizz Mania!</h1>
-  </div>
+    <h1 class="text-center">Bienvenue sur Quizz Mania!</h1>
   <h3 class="text-center">Les Nouveaux Quizz:</h3>
       <div class="container text-center">
       <?php
