@@ -1,9 +1,20 @@
 <?php
 require_once 'entete.php';
-require_once 'modeles/modeles.php';
+require_once '../modeles/Quizz.php';
+$quizz = new Quizz(1);
+$question = new Question(1);
+$cat = new Categorie(1);
+$rep = new Reponse(1);
   ?>
   <h1 class="text-center">Bienvenue sur Quizz Mania!</h1>
-
+<?php
+   echo $quizz->getQuizz();
+   echo $question->getQuestion();
+   echo $question->getidQuestion();
+   echo $cat->getidCat();
+   echo $rep->getReponse();
+   echo $rep->getStatutR();
+      ?>
   <h3 class="text-center">Les Nouveaux Quizz:</h3>
         
       <div class="container text-center">
@@ -19,10 +30,11 @@ require_once 'modeles/modeles.php';
                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
               </div>
+              <a class="btn btn-primary" href="creerQuizz.php">Créer un nouveau quizz</a>
             </div>
           </div>
       </div>
-     
+      
       <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown button
