@@ -3,14 +3,11 @@ require_once 'entete.php';
 require_once '../modeles/Quizz.php';
 $Q = new Quizz();
 $Quizzs = $Q->getAllQuizz();
-<<<<<<< HEAD
-=======
   ?>
 
 
   <h1 class="text-center underline">Bienvenue sur Quizz Mania!</h1>
->>>>>>> f76ad6a44e46ef85dc3a2471b6142cb349f3751a
-
+<?php
   if(isset($_GET["success"])&& $_GET['success'] == 1 ){
     ?>
         <div class="alert alert-success">
