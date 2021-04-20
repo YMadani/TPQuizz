@@ -1,9 +1,11 @@
 <?php
+
 class Question extends modeles
 
 {
-private $idQuestion;
-private $reponses;
+    private $question;
+    private $idQuestion;
+    private $reponses=[];
     
 public function __construct($idQuestion = null)
     {
@@ -51,5 +53,25 @@ public function __construct($idQuestion = null)
     public function setQuestion($newQ)
     {
         $this->question = $newQ;
+    }
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+    public function setidQuestion($idQuestion)
+    {
+        $this->idQuestion = $idQuestion;
+    }
+    public function addReponse($reponse)
+    {
+        $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, idQuestion) VALUES (?,?)");
+        $requete->execute();
+
+        $this->reponses = $reponse;
+    }
+    public function removeReponse($idReponse)
+    {
+        $requete=$this->getBdd()->prepare("DELETE FROM reponses WHERE idReponse = ? ");
+        $requete->execute([$idReponse]);
     }
 }

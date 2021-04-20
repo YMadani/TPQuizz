@@ -25,6 +25,10 @@ class Reponse extends modeles
       $this->statut = $vrai;
   }
 
+  public function getidReponse()
+  {
+      return $this->idReponse;
+  }
   public function getReponse()
   {
       return $this->reponse;
@@ -36,5 +40,13 @@ class Reponse extends modeles
   public function setReponse($newReponse)
   {
       $this->reponse = $newReponse;
+  }
+  public function setidReponse($idReponse)
+  {
+      $this->idReponse = $idReponse;
+  }
+  public function setStatutR($statut)
+  {
+      $this->statut = $statut;
   }
 }

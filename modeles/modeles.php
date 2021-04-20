@@ -18,4 +18,3 @@ require_once '../modeles/Qsecrete.php';
 require_once '../modeles/Questions.php';
 require_once '../modeles/Reponses.php';
 require_once '../modeles/Categories.php';
-require_once '../modeles/Session.php';

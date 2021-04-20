@@ -34,6 +34,7 @@ $Quizzs = $Q->getAllQuizz();
                   <p class="card-text"><small class="text-muted">coucou</small></p>
                 </div>
               </div>
+              <a class="btn btn-primary" href="creerQuizz.php">Créer un nouveau quizz</a>
             </div>
           </div>
           <?php
