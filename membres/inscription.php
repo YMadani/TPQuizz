@@ -37,3 +37,6 @@
   <button type="submit" name="envoie" class="btn btn-success my-3" style="margin-left: 40%;">S'inscrire</button>
 </form>
 </div>
+<?php 
+require_once 'footer.php';
+?>

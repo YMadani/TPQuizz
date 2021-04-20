@@ -17,10 +17,15 @@ require_once '../modeles/modeles.php';
 <body class="gradiant">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-    <div id="cool" >
-    
-<span class="fas fa-2x fa-bars"></span>
-</div>
+    <?php
+    if(!empty($_SESSION['idUser'])){
+      ?>
+        <div id="cool" >
+          <span class="fas fa-2x fa-bars"></span>
+        </div>
+      <?php
+      }
+      ?>
         <a class="navbar-brand"  > 
             <img src="images/quizz.png"  width="40" height="34" class="d-inline-block align-text-top">
         Quizz Mania !</a>
@@ -33,18 +38,25 @@ require_once '../modeles/modeles.php';
       </div>
       <div class="navbar-nav" style="margin-left: 80%;">
         <a class="btn btn-success" href="connexion.php">Connexion</a><br>
-        <a class="btn btn-primary mx-1" href="inscription.php">Inscription</a>
         <?php 
-        if(isset($_SESSION['pseudo']) && !empty($_SESSION['pseudo'])){
-          $pseudo=$_SESSION['pseudo'];
-            ?>
-            <a href="profile.php?pseudo=<?=$pseudo;?>">Votre profil</a>
-            <?php
+        if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
+          ?>
+          <form method="POST" action="../Traitements/Deconnexion.php?pseudo=<?=$_SESSION['Pseudo']?>">
+          <button type="submit" name="deco" class="btn btn-primary mx-1" value="1">Déconnexion</button>
+          </form>
+        <?php 
+        }else{
+        ?>
+         <a class="btn btn-primary mx-1" href="inscription.php">Inscription</a>
+         <?php
         }
-?>
+        ?>
     </div>
   </div>
 </nav>
+ <?php 
+        if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
+          ?>
 <aside class="lemenu">
   
     <li>  
@@ -58,13 +70,12 @@ require_once '../modeles/modeles.php';
     <li>
       <span class="fas fa-user-friends couleur"></span>
       <a href=""class="effect-1">
-      
       Amis
    </a> </li>
   
  <li>
     <span class="fas fa-list couleur"></span>
-     <a href=""class="effect-1">
+     <a href="creerQuizz.php" class="effect-1">
      Créer un Quizz
      </a>
   </li>
@@ -78,3 +89,6 @@ require_once '../modeles/modeles.php';
     </a>
 </li>
 </aside>
+<?php
+        }
+        ?>

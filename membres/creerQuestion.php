@@ -34,3 +34,5 @@ if(isset($idQuizz) && !empty($idQuizz)){
   
     <?php
 }
+require_once 'footer.php';
+?>

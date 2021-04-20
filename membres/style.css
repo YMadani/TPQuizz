@@ -19,18 +19,6 @@ h1 {
   white-space: normal;
   vertical-align: bottom;
 }
-/* a{
-  margin: 0 0 50px;
-  font-weight: normal;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-a:hover{
-  text-shadow: 1px 1px 0 #37cdf5, 2px 2px 0 #1fc7f3, 3px 3px 0 #0cbdec;
-  transform: translate(-3px, -3px);
-} */
-
 
 .couleur{
   color: white;
@@ -54,7 +42,7 @@ a:hover{
   padding-top: 10px;
 }
 .effect-1:before {
-  margin-top: 6px;
+  margin-top: 10px;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -88,6 +76,15 @@ aside
     list-style-type: none;
   }
 
+.scale:hover
+{
+  box-shadow: 10px black;
+  transform: scale(1.1);
+}
+.scale
+{ 
+  transition:all 0.5s ease-in-out ;
+}
 aside.active{
   left: 0;
 }

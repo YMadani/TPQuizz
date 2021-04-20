@@ -7,3 +7,4 @@ cool.addEventListener('click',()=>{
     
 })}
 asideactive();
+
