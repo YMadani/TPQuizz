@@ -4,8 +4,9 @@ class Quizz extends modeles
         private $idQuizz;
         private $titre;
         private $categorie;
+        private $questions = [];
         private $idQuestion;
-
+        private $AllQuizz;
         public function __construct($idQuizz = null)
         {
 
@@ -29,8 +30,15 @@ class Quizz extends modeles
                     $objetQuestion->initialiserQuestion($question["idQuestion"],$question["nomQuestion"]);
                     $this->questions[] = $objetQuestion;
                 }
+            }else{
+            $requete = $this->getBdd()->prepare("SELECT * FROM quizz");
+            $requete->execute();
+            $ttQuizz = $requete->fetchAll(PDO::FETCH_ASSOC);
+    
+            $this->AllQuizz = $ttQuizz;
             }
         }
+    
         public function getId(){
             return $this->idQuizz;
         }
@@ -68,7 +76,13 @@ class Quizz extends modeles
         }
         public function countId()
         {
-            $requete=$this->getBdd()->prepare("SELECT count(idQuizz) FROM quizz");
+            $requete=$this->getBdd()->prepare("SELECT * FROM quizz");
             $requete->execute();
+            $requete->fetchAll(PDO::FETCH_ASSOC);
+            return $requete->rowCount();
+        }
+        public function getAllQuizz()
+        {
+            return $this->AllQuizz;
         }
     }

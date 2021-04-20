@@ -20,3 +20,4 @@ $cat=$categorie->gettoutCategorie();
     <button class="btn btn-success my-2" style="margin-left: 45%;" type="submit">Suivant</button>
 </form>
 </div>
+<?php require_once 'footer.php'?>

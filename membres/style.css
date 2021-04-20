@@ -1,11 +1,11 @@
 h1 {
-  color: rgb(78, 78, 192);
+  color: rgb(255, 255, 255);
 }
 .fa-line {
   color: green;
 }
 .gradiant {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 252, 96, 0.753)), to(#e7490ba8)) fixed;
+ background-color:  #5e42a6;
 }
 .imgdiv img{
   width: 100%;
@@ -18,4 +18,64 @@ h1 {
 .dropdown-item .user-item {
   white-space: normal;
   vertical-align: bottom;
+}
+
+.couleur{
+  color: white;
+}
+a{
+  position: relative;
+  color: white;
+  text-decoration: none;
+  line-height: 24px;
+}
+a:before, a:after{
+  content: "";
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+a:hover{
+  color: white;
+}
+
+.effect-1 {
+  padding-top: 10px;
+}
+.effect-1:before {
+  margin-top: 6px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: whitesmoke;
+  transform: scaleX(0);
+}
+.effect-1:hover:before {
+  transform: scaleX(1);
+}
+
+aside
+{
+  padding-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  
+  padding-top: 20px;
+  border-top-right-radius: 60px;
+  position: absolute;
+  left: -300px;
+  transition: all 0.8s ease;
+  width: 200px;
+  height: 100vh;
+  background: #312450;
+  text-align: left;
+  
+  line-height: 4rem;
+  }
+  aside li{
+    list-style-type: none;
+  }
+
+aside.active{
+  left: 0;
 }

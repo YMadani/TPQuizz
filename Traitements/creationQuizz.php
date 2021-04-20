@@ -8,9 +8,7 @@ if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
     try{
         $quizz->insertQuizz($nomQuizz, $idCat, $idUser);
         $count = $quizz->countId();
-        $idQuizz = $quizz->getId($count);
-        print_r($idQuizz);exit;
-        header('location:../membres/creerQuestion.php?idQuizz=<?=$idQuizz;?>&idQuestion=1');
+        header('location:../membres/creerQuestion.php?idQuestion=1&idQuizz='.$count);
     }catch(Exception $e){
         ?>
         <div class="alert alert-danger">Il y a eu un problème lors de l'enregistrement du quizz<br>
@@ -20,7 +18,7 @@ if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
     }
 }
 if(isset($_GET['idQuestion']) && !empty($_GET['idQuestion'])){
-    if($_GET['idQuestion'] > 10){
+    if($_GET['idQuestion'] == 10){
         ?>
         <div class="alert alert-primary">
             Le Quizz a bien été enregistré, retour à la page d'accueil.
