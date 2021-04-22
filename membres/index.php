@@ -4,6 +4,8 @@ require_once '../modeles/Quizz.php';
 $Q = new Quizz();
 $Quizzs = $Q->getAllQuizz();
   ?>
+
+
 <?php
   if(isset($_GET["success"])&& $_GET['success'] == 1 ){
     ?>
@@ -13,9 +15,7 @@ $Quizzs = $Q->getAllQuizz();
       <?php
     }
     ?>
-
     <h1 class="text-center">Bienvenue sur Quizz Mania!</h1>
-    
   <h3 class="text-center">Les Nouveaux Quizz:</h3>
       <div class="container text-center">
       <?php
