@@ -21,7 +21,6 @@ $Quizzs = $Q->getAllQuizz();
       <?php
       foreach($Quizzs as $Quizz){
        ?>
-      
           <div class="card scale mb-3">
             <div class="row g-0">
               <div class="col-md-4 imgdiv">
@@ -32,10 +31,12 @@ $Quizzs = $Q->getAllQuizz();
                   <h5 class="card-title"><?=$Quizz["nomQuizz"]?></h5>
                   <p class="card-text"><?=$Quizz["idQuizz"]?></p>
                   <p class="card-text"><small class="text-muted">coucou</small></p>
+                  <a class="btn btn-primary" href="quizz.php?idQuizz=<?=$Quizz['idQuizz'];?>">Faire ce quizz</a>
                 </div>
               </div>
             </div>
           </div>
+          
           <?php
           }
           ?>

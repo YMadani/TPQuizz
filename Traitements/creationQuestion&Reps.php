@@ -15,11 +15,11 @@ isset($reponse4) && !empty($reponse4) &&
 isset($idQuizz) && !empty($idQuizz)){
     try{
         if($i<10){
-        $quizz->addQuestion($nomQuestion,$idQuizz);
-        $reponses->addReponseVrai($reponse1, $vrai, $idQuizz);
-        $reponses->addReponse($reponse2, $idQuizz);
-        $reponses->addReponse($reponse3, $idQuizz);
-        $reponses->addReponse($reponse4, $idQuizz);
+        $quizz->addQuestion($nomQuestion,$i);
+        $reponses->addReponseVrai($reponse1, $vrai, $i);
+        $reponses->addReponse($reponse2, $i);
+        $reponses->addReponse($reponse3, $i);
+        $reponses->addReponse($reponse4, $i);
         $i++;
         header("location:../membres/creerQuestion.php?idQuestion=".$i."&idQuizz=".$idQuizz);
         }else{
