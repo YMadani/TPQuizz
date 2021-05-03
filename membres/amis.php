@@ -1,5 +1,38 @@
 <?php require_once 'entete.php';
 
+$idUser = $_SESSION['idUser'];
+
+$quizz = new Quizz();
+
+$quizzfaitami = $quizz->quizzAmi($idUser);
+
+$user = new Utilisateur($idUser);
+
+$amis= $user->afficherAmi($idUser);
+
+?>
+<h1 class="text-center my-2">Liste d'amis</h1>
+<?php
+foreach($amis as $ami){
+?>
+<div class="container my-5">
+<div class="card w-50">
+  <div class="card-body">
+    <h5 class="card-title"><?=$ami['Pseudo'];?></h5>
+    <p class="card-text">Quizz fait(s): <?=count($quizzfaitami);?></p>
+    <?php
+    if(count($quizzfaitami)>0){
+        ?>
+    <a href="#" class="btn btn-primary">Voir ses quizz</a>
+    <?php
+    }
+    ?>
+  </div>
+</div>
+</div>
+<?php
+}
+
 if(isset($_GET["success"]) && $_GET['success'] == 1){
     ?>
     <div class="alert alert-success">Votre ami <?=$_GET['pseudo'];?> a bien été ajouté dans votre liste d'amis<br>

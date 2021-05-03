@@ -78,6 +78,11 @@ class Utilisateur extends modeles
         $requete = $this->getBdd()->prepare("INSERT INTO amis (idUser, idAmi) VALUES (?,(SELECT idUser FROM utilisateurs WHERE Pseudo LIKE ? ORDER BY idUser))");
         $requete->execute([$this->getidUtilisateur(),$pseudo]);
     }
+    public function afficherAmi($idUser){
+        $requete = $this->getBdd()->prepare('SELECT * FROM utilisateurs INNER JOIN amis ON amis.idAmi = utilisateurs.idUser WHERE amis.idUser = ? ');
+        $requete->execute([$idUser]);
+        return $requete->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function getConnexion()
     {

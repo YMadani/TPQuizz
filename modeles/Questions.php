@@ -9,6 +9,7 @@ class Question extends modeles
     
 public function __construct($idQuestion = null)
     {
+    if($idQuestion != null){
         $requete = $this->getBdd()->prepare("SELECT * FROM questions WHERE idQuestion = ?");
         $requete->execute([$idQuestion]);
         $LaQuestion = $requete->fetch(PDO::FETCH_ASSOC);
@@ -22,9 +23,10 @@ public function __construct($idQuestion = null)
         $this->question = $LaQuestion["nomQuestion"];
 
         foreach($reponses as $reponse){
-            $objetReponse = new Reponse($reponse["idQuestion"]);
+            $objetReponse = new Reponse($reponse["idReponse"]);
             $this->reponses[] = $objetReponse;
         }
+    }
     }
     public function initialiserQuestion($idQuestion, $question){
         $this->idQuestion = $idQuestion;
