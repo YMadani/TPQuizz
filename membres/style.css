@@ -88,3 +88,10 @@ aside
 aside.active{
   left: 0;
 }
+.planque{
+  display: none;
+}
+.show
+{
+  display: block!important;
+}

@@ -22,7 +22,7 @@ public function __construct($idQuestion = null)
         $this->question = $LaQuestion["nomQuestion"];
 
         foreach($reponses as $reponse){
-            $objetReponse = new Reponse($reponse["idQuestion"]);
+            $objetReponse = new Reponse($reponse["idReponse"]);
             $this->reponses[] = $objetReponse;
         }
     }
@@ -43,42 +43,42 @@ public function __construct($idQuestion = null)
     }
 
     public function getQuestion()
-    {
-        return $this->question;
-    }
+        {
+            return $this->question;
+        }
     public function getidQuestion()
-    {
-        return $this->idQuestion;
-    }
+        {
+            return $this->idQuestion;
+        }
     public function setQuestion($newQ)
-    {
-        $this->question = $newQ;
-    }
+        {
+            $this->question = $newQ;
+        }
     public function getReponses()
-    {
-        return $this->reponses;
-    }
+        {
+            return $this->reponses;
+        }
     public function setidQuestion($idQuestion)
-    {
-        $this->idQuestion = $idQuestion;
-    }
+        {
+            $this->idQuestion = $idQuestion;
+        }
     public function addReponseVrai($reponse, $statut, $i)
-    {
-        $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, Vrai, idQuestion) VALUES (?,?,?)");
-        $requete->execute([$reponse, $statut, $i]);
+        {
+            $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, Vrai, idQuestion) VALUES (?,?,?)");
+            $requete->execute([$reponse, $statut, $i]);
 
-        $this->reponses = $reponse;
-    }
+            $this->reponses = $reponse;
+        }
     public function addReponse($reponse, $i)
-    {
-        $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, idQuestion) VALUES (?,?)");
-        $requete->execute([$reponse, $i]);
+        {
+            $requete= $this->getBdd()->prepare("INSERT INTO reponses (nomReponse, idQuestion) VALUES (?,?)");
+            $requete->execute([$reponse, $i]);
 
-        $this->reponses = $reponse;
-    }
+            $this->reponses = $reponse;
+        }
     public function removeReponse($idReponse)
-    {
-        $requete=$this->getBdd()->prepare("DELETE FROM reponses WHERE idReponse = ? ");
-        $requete->execute([$idReponse]);
-    }
+        {
+            $requete=$this->getBdd()->prepare("DELETE FROM reponses WHERE idReponse = ? ");
+            $requete->execute([$idReponse]);
+        }
 }

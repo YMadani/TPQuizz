@@ -24,6 +24,8 @@ require_once '../modeles/modeles.php';
                 header('location:../membres/connexion.php?success=0&erreurs='.$erreurs);
             }
         
+    }else{
+        header('location:../membres/connexion.php?success=0');
     }
 
 ?>

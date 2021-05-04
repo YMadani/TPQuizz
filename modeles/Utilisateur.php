@@ -10,35 +10,29 @@ class Utilisateur extends modeles
     private $connecte;
     private $Rsecrete;
     private $idQsecrete;
-    private $Qsecrete;
+    private $QSecrete;
     private $erreur;
     private $VerifU;
+    private $recupidUser;
 //Method UML comment schématiser des class
     public function __construct($idUtilisateur = null)
     {
         if($idUtilisateur != null)
 
         {
-            $sql = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE idUtilisateur = ?");
+            $sql = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE idUser = ?");
             $sql->execute([$idUtilisateur]);
             $User = $sql->fetch(PDO::FETCH_ASSOC);
 
-            $this->username=$User["nom"];
-            $this->mdp=$User["mdp"];
-            $this->email=$User["email"];
-            $this->idUtilisateur=$User["idUtilisateur"];
+            $this->username=$User["Pseudo"];
+            $this->mdp=$User["Mdp"];
+            $this->email=$User["Email"];
+            $this->idUtilisateur=$User["idUser"];
             $this->idRole=$User["idRole"];
-            $this->Rsecrete=$User["Rsecrete"];
-            $this->idQsecrete=$User["idQsecrete"];
+            $this->Rsecrete=$User["Reponse"];
+            $this->idQsecrete=$User["idQSecrete"];
 
-            $this->QSecrete = new QSecrete($User["idQsecrete"]);            
-
-        }else{
-            $requete = $this->getBdd()->prepare("SELECT email FROM utilisateurs WHERE email = ?");
-            $requete->execute([$_POST["email"]]);
-            $VerifU =  $requete;
-
-            $this->VerifU = $VerifU;
+            $this->QSecrete = new QSecrete($User["idQSecrete"]);            
         }
     }
 
@@ -49,12 +43,12 @@ class Utilisateur extends modeles
         if($sql->rowcount()>0  )
         {
             $connexion = $sql->fetch(PDO::FETCH_ASSOC);
-           if(!password_verify($password,$connexion["mdp"])){
+           if(password_verify($password,$connexion["Mdp"])){
                 
             $this->connecte = $connexion;
                 
            }else{
-                $erreur = " le mote de passe est incorrect";
+                $erreur = " le mot de passe est incorrect";
            }
         }else 
         { 
@@ -71,38 +65,84 @@ class Utilisateur extends modeles
         $sql->execute([$username,$password,$email,$idQsecrete,$Rsecrete]);
         
     }
+    //method selon le pseudo
+    public function recupUtilisateur($pseudo)
+    {
+        $sql = $this->getBdd()->prepare("SELECT idUser FROM utilisateurs WHERE Pseudo =? ");
+        $sql->execute([$pseudo]);
+        $idUtilisateur = $sql->fetch(PDO::FETCH_ASSOC);
+
+        $this->recupidUser = $idUtilisateur['idUser'] ;
+    }
+
+    public function changerMDP($mdp,$idUser)
+    {
+        $sql = $this->getBdd()->prepare("UPDATE utilisateurs SET Mdp = ?  WHERE idUser = ? ");
+        $sql->execute([$mdp,$idUser]);
+    }
+    public function userEmail($email)
+    {
+        $requete = $this->getBdd()->prepare("SELECT * FROM utilisateurs WHERE Email = ?");
+        $requete->execute([$email]);
+        $VerifU =  $requete->fetch(PDO::FETCH_ASSOC);
+
+            $this->username=$VerifU["Pseudo"];
+            $this->mdp=$VerifU["Mdp"];
+            $this->email=$VerifU["Email"];
+            $this->idUtilisateur=$VerifU["idUser"];
+            $this->idRole=$VerifU["idRole"];
+            $this->Rsecrete=$VerifU["Reponse"];
+            $this->idQsecrete=$VerifU["idQSecrete"]; 
+    }
 
     public function getConnexion()
-    {
-        return $this->connecte;
-    }
+        {
+            return $this->connecte;
+        }
     public function getidUtilisateur()
-    {
-        return $this->idUtilisateur;
-    }
+        {
+            return $this->idUtilisateur;
+        }
     public function getRole()
-    {
-        return $this->idRole;
-    }
+        {
+            return $this->idRole;
+        }
     public function getEmail()
-    {
-        return $this->email;
-    }
+        {
+            return $this->email;
+        }
     public function getPassword()
-    {
-        return $this->mdp;
-    }
+        {
+            return $this->mdp;
+        }
     public function getUsername()
-    {
-        return $this->username;
-    }
+        {
+            return $this->username;
+        }
     public function getErreur()
-    {
-        return $this->erreur;
-    }
+        {
+            return $this->erreur;
+        }
     public function getVerifUtilisateur()
-    {
-        return $this->VerifU;  
-    }
+        {
+            return $this->VerifU;  
+        }
+    public function getrecupidUser()
+        {
+            return $this->recupidUser;  
+        }
+    public function getQSecrete()
+        {
+            return $this->QSecrete;  
+        }
+    public function getRSecrete()
+        {
+            return  $this->Rsecrete;  
+        }
+    public function getidQsecrete()
+        {
+            return  $this->idQsecrete;  
+        }
+       
 }
 

@@ -1,10 +1,27 @@
 function asideactive()
 {
-    var cool = document.getElementById("cool");
     var menu = document.querySelector(".lemenu");
-cool.addEventListener('click',()=>{
-    menu.classList.toggle("active");
-    
-})}
-asideactive();
 
+    menu.classList.toggle("active");   
+}
+
+
+function QSecrete()
+{
+var Connexion = document.getElementById("connexion");
+var getQsecrete = document.getElementById("formQsecrete");
+
+var Qsecrete = document.getElementById('Qsecrete');
+var formConnexion = document.getElementById('formConnexion');
+
+    formConnexion.classList.add('planque');
+    Qsecrete.classList.add('show');
+    Qsecrete.classList.remove('planque');
+    Connexion.classList.add('planque');
+    getQsecrete.classList.add('show');
+    getQsecrete.classList.remove('planque');
+}
+function incrementeri()
+{
+    i++
+}

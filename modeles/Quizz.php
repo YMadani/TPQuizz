@@ -39,50 +39,60 @@ class Quizz extends modeles
             }
         }
     
-        public function getId(){
-            return $this->idQuizz;
-        }
-        public function getQuizz(){
-            return $this->titre;
-        }
-        public function getCategorie(){
-            return $this->categorie;
-        }
-        public function getQuestions(){
-            return $this->questions;
-        }
-        public function setId($idQuizz){
-            $this->idQuizz = $idQuizz;
-        }
-        public function setTitre($titre){
-            $this->titre = $titre;
-        }
-        public function setCategorie($Categorie){
-            $this->categorie = $Categorie;
-        }
-        public function addQuestion($question,$idQuizz){
-            $requete=$this->getBdd()->prepare("INSERT INTO questions (nomQuestion, idQuizz) VALUES (?,?)");
-            $requete->execute([$question, $idQuizz]);
+        public function getId()
+            {
+                return $this->idQuizz;
+            }
+        public function getQuizz()
+            {
+                return $this->titre;
+            }
+        public function getCategorie()
+            {
+                return $this->categorie;
+            }
+        public function getQuestions()
+            {
+                return $this->questions;
+            }
+        public function setId($idQuizz)
+            {
+                $this->idQuizz = $idQuizz;
+            }
+        public function setTitre($titre)
+            {
+                $this->titre = $titre;
+            }
+        public function setCategorie($Categorie)
+            {
+                $this->categorie = $Categorie;
+            }
+        public function addQuestion($question,$idQuizz)
+            {
+                $requete=$this->getBdd()->prepare("INSERT INTO questions (nomQuestion, idQuizz) VALUES (?,?)");
+                $requete->execute([$question, $idQuizz]);
 
-            $this->questions = $question;
-        }
-        public function removeQuestion($idQuestion){
-            $requete=$this->getBdd()->prepare("DELETE FROM questions WHERE idQuestion = ? ");
-            $requete->execute([$idQuestion]);
-        }
-        public function insertQuizz($nomQuizz, $idCat, $idUser){
-            $requete=$this->getBdd()->prepare("INSERT INTO quizz (nomQuizz, idUser, idCat) VALUES (?,?,?)");
-            $requete->execute([$nomQuizz, $idCat, $idUser]);
-        }
+                $this->questions = $question;
+            }
+        public function removeQuestion($idQuestion)
+            {
+                $requete=$this->getBdd()->prepare("DELETE FROM questions WHERE idQuestion = ? ");
+                $requete->execute([$idQuestion]);
+            }
+        public function insertQuizz($nomQuizz, $idCat, $idUser)
+            {
+                $requete=$this->getBdd()->prepare("INSERT INTO quizz (nomQuizz, idUser, idCat) VALUES (?,?,?)");
+                $requete->execute([$nomQuizz, $idCat, $idUser]);
+            }
         public function countId()
-        {
-            $requete=$this->getBdd()->prepare("SELECT * FROM quizz");
-            $requete->execute();
-            $requete->fetchAll(PDO::FETCH_ASSOC);
-            return $requete->rowCount();
-        }
+            {
+                $requete=$this->getBdd()->prepare("SELECT * FROM quizz");
+                $requete->execute();
+                $requete->fetchAll(PDO::FETCH_ASSOC);
+                return $requete->rowCount();
+            }
         public function getAllQuizz()
-        {
-            return $this->AllQuizz;
-        }
+            {
+                return $this->AllQuizz;
+            }
     }

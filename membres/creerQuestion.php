@@ -64,9 +64,5 @@ if(isset($idQuizz) && !empty($idQuizz) && $_GET['idQuestion']==1){
   
     <?php
 }
-<<<<<<< HEAD
 require_once 'footer.php';
 ?>
-=======
- require_once 'footer.php'?>
->>>>>>> f76ad6a44e46ef85dc3a2471b6142cb349f3751a

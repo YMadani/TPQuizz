@@ -20,7 +20,7 @@ require_once '../modeles/modeles.php';
     <?php
     if(!empty($_SESSION['idUser'])){
       ?>
-        <div id="cool" >
+        <div onclick="asideactive();">
           <span class="fas fa-2x fa-bars"></span>
         </div>
       <?php
