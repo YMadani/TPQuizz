@@ -69,6 +69,7 @@
       </form>
 
   </div>
+<<<<<<< HEAD
   <div class="container planque" id="Qsecrete">
 
       <form class="my-3" method="post" action="../Traitements/recupmdp.php" style="width: 35%; margin-left:33%;">
@@ -87,3 +88,7 @@
   <?php 
 require_once 'footer.php';
 ?>
+=======
+
+  <?php require_once 'footer.php'?>
+>>>>>>> refs/remotes/origin/main

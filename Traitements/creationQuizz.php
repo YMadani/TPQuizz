@@ -2,7 +2,7 @@
 require_once '../membres/entete.php';
 extract($_POST);
 $quizz = new Quizz();
-$idUser = 1;
+$idUser = $_SESSION['idUser'];
 
 if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
     try{

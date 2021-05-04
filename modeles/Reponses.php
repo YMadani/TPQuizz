@@ -49,4 +49,9 @@ class Reponse extends modeles
   {
       $this->statut = $statut;
   }
+  public function repondre($idUser, $idQuestion, $idReponse)
+  {
+    $requete=$this->getBdd()->prepare("INSERT INTO repondre (idUser, idQuestion, idReponse) VALUES (?,?,?)");
+    $requete->execute([$idUser, $idQuestion, $idReponse]);
+  }
 }

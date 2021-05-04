@@ -37,16 +37,16 @@ require_once '../modeles/modeles.php';
         <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
       </div>
       <div class="navbar-nav" style="margin-left: 80%;">
-        <a class="btn btn-success" href="connexion.php">Connexion</a><br>
         <?php 
         if(isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
           ?>
           <form method="POST" action="../Traitements/Deconnexion.php?pseudo=<?=$_SESSION['Pseudo']?>">
-          <button type="submit" name="deco" class="btn btn-primary mx-1" value="1">Déconnexion</button>
+          <button type="submit" name="deco" class="btn btn-primary" style="margin-left: 80%;" value="1">Déconnexion</button>
           </form>
         <?php 
         }else{
-        ?>
+          ?>
+          <a class="btn btn-success" href="connexion.php">Connexion</a><br>
          <a class="btn btn-primary mx-1" href="inscription.php">Inscription</a>
          <?php
         }
@@ -69,7 +69,7 @@ require_once '../modeles/modeles.php';
   
     <li>
       <span class="fas fa-user-friends couleur"></span>
-      <a href=""class="effect-1">
+      <a href="amis.php"class="effect-1">
       Amis
    </a> </li>
   
@@ -82,7 +82,7 @@ require_once '../modeles/modeles.php';
   
   <li > 
     <span class="fas fa-scroll couleur"></span>
-    <a href=""class="effect-1">
+    <a href="historiqueQuizz.php"class="effect-1">
       
       Historique de Quizz
     

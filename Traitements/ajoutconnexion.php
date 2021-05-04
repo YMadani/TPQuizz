@@ -1,6 +1,6 @@
 <?php
 require_once '../modeles/modeles.php';
-    if(isset($_POST["pseudo"])&&!empty($_POST['pseudo'])&&isset($_POST["mdp"])&&!empty($_POST['mdp']))
+    if(isset($_POST["pseudo"]) && !empty($_POST['pseudo']) && isset($_POST["mdp"]) && !empty($_POST['mdp']))
     {
         $pseudo = $_POST["pseudo"];
         $mdp = $_POST['mdp'];

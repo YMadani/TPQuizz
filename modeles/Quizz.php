@@ -92,7 +92,19 @@ class Quizz extends modeles
                 return $requete->rowCount();
             }
         public function getAllQuizz()
-            {
-                return $this->AllQuizz;
-            }
+        {
+            return $this->AllQuizz;
+        }
+        public function quizzUser($idUser)
+        {
+            $requete=$this->getBdd()->prepare("SELECT * FROM quizz INNER JOIN participationquizz USING (idUser) WHERE idUser = ?");
+            $requete->execute([$idUser]);
+           return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
+        public function quizzAmi($idUser)
+        {
+            $requete=$this->getBdd()->prepare("SELECT * FROM participationquizz INNER JOIN amis ON participationquizz.idUser = amis.idAmi WHERE amis.idUser = ?");
+            $requete->execute([$idUser]);
+           return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
     }
