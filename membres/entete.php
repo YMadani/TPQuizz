@@ -61,7 +61,7 @@ require_once '../modeles/modeles.php';
   
     <li>  
       <span class="fas fa-user-circle couleur"></span>
-      <a href=""class="effect-1">
+      <a href="Profil.php"class="effect-1">
         Profil
       </a> 
     </li>

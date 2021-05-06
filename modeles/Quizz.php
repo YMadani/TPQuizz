@@ -7,6 +7,7 @@ class Quizz extends modeles
         private $questions = [];
         private $idQuestion;
         private $AllQuizz;
+        private $lastId;
         public function __construct($idQuizz = null)
         {
 
@@ -38,7 +39,10 @@ class Quizz extends modeles
             $this->AllQuizz = $ttQuizz;
             }
         }
-    
+        public function getlastId()
+        {
+            return $this->lastId;
+        }
         public function getId()
             {
                 return $this->idQuizz;
@@ -83,6 +87,10 @@ class Quizz extends modeles
             {
                 $requete=$this->getBdd()->prepare("INSERT INTO quizz (nomQuizz, idUser, idCat) VALUES (?,?,?)");
                 $requete->execute([$nomQuizz, $idCat, $idUser]);
+                $sql = $this->getBdd()->prepare("SELECT MAX(idQuizz) as id from Quizz ");
+                $sql->execute();
+                $lastid = $sql->fetch(PDO::FETCH_ASSOC);
+                $this->lastId = $lastid;
             }
         public function countId()
             {
@@ -91,6 +99,7 @@ class Quizz extends modeles
                 $requete->fetchAll(PDO::FETCH_ASSOC);
                 return $requete->rowCount();
             }
+        
         public function getAllQuizz()
         {
             return $this->AllQuizz;

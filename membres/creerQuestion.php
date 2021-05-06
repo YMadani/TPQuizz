@@ -1,12 +1,13 @@
 <?php require_once 'entete.php';
 
 $idQuizz = $_GET['idQuizz'];
+print_r($_SESSION['compteur']);
 
-if(isset($idQuizz) && !empty($idQuizz) && $_GET['idQuestion']==1){
+if(isset($idQuizz) && !empty($idQuizz) && $_SESSION['compteur']==$_SESSION['idPQuestion']['id']+1){
     ?>
     <h1 class="text-center"> Création de la 1ère question du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
-    <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=1">
+    <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php">
     <div style="color: white; font-size: 35px;">
     <label for="nomQuestion"> Nom de la question :</label>
     </div>
@@ -33,11 +34,11 @@ if(isset($idQuizz) && !empty($idQuizz) && $_GET['idQuestion']==1){
 
     <?php
 }
-    if(isset($_GET['idQuestion']) && !empty($_GET['idQuestion']) && $_GET['idQuestion']!=1){
+    if(isset($_SESSION['compteur']) && !empty($_SESSION['compteur']) && $_SESSION['compteur']!=$_SESSION['idPQuestion']['id']+1){
     ?>
-    <h1 class="text-center"> Création de la question <?=$_GET['idQuestion'];?> du Quizz n°<?=$idQuizz;?></h1>
+    <h1 class="text-center"> Creation de la question <?=$_SESSION['compteur'];?> du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
-    <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=<?=$_GET['idQuestion'];?>">
+    <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=<?=$_SESSION['compteur'];?>">
     <div style="color: white; font-size: 35px;">
     <label for="nomQuestion"> Nom de la question :</label>
     </div>

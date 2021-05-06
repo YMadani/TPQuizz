@@ -7,10 +7,11 @@ $idUser = $_SESSION['idUser'];
 if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
     try{
         $quizz->insertQuizz($nomQuizz, $idCat, $idUser);
-        $count = $quizz->countId();
-        $_SESSION['idPQuestion'] = $quizz->maxidQuestion($count);
-        $_SESSION['compteur']= $_SESSION['idPQuestion']['id']+1;
-        header('location:../membres/creerQuestion.php?idQuestion=1&idQuizz='.$count);
+        $lastId = $quizz->getlastId();
+        $idQuizz = $lastId['id'];
+        $_SESSION['idPQuestion'] = $quizz->maxidQuestion($idQuizz);
+        $_SESSION['compteur'] = $_SESSION['idPQuestion']['id']+1;
+        header("location:../membres/creerQuestion.php?idQuizz=".$lastId['id']);
     }catch(Exception $e){
         ?>
         <div class="alert alert-danger">Il y a eu un problème lors de l'enregistrement du quizz<br>
@@ -19,8 +20,8 @@ if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
         <?php
     }
 }
-if(isset($_GET['idQuestion']) && !empty($_GET['idQuestion'])){
-    if($_GET['compteur'] == $_SESSION['idPQuestion']+9){
+if(isset( $_SESSION['compteur']) && !empty( $_SESSION['compteur'])){
+    if($_SESSION['compteur'] == $_SESSION['idPQuestion']['id']+10){
         ?>
         <div class="alert alert-primary">
             Le Quizz a bien été enregistré, retour à la page d'accueil.
