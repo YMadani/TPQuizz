@@ -4,6 +4,7 @@ $reponse=new Reponse();
 
 $idQuizz = $_GET['idQuizz'];
 
+
 if (isset($_SESSION['idUser']) && !empty($_SESSION['idUser'])){
     $idUser = $_SESSION['idUser'];
 }else{
@@ -20,6 +21,7 @@ if(!empty($_POST) && $_SESSION['idQuestion']['id'] < $_SESSION['tour']['id']+10)
 
     header('location:../membres/quizz.php?idQuizz='.$idQuizz);
 }else{
-    header('location:../membres/index.php');
+    $reponse->repondre($idUser, $_SESSION['idQuestion']['id'], $value);
+    header('location:../membres/finquizz.php?idQuizz='.$idQuizz);
 }
 

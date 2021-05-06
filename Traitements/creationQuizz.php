@@ -9,7 +9,7 @@ if(isset($nomQuizz) && !empty($nomQuizz) && isset($idUser) && !empty($idUser)){
         $quizz->insertQuizz($nomQuizz, $idCat, $idUser);
         $lastId = $quizz->getlastId();
         $idQuizz = $lastId['id'];
-        $_SESSION['idPQuestion'] = $quizz->maxidQuestion();
+        $_SESSION['idPQuestion'] = $quizz->maxidQuestion($idQuizz);
         $_SESSION['compteur'] = $_SESSION['idPQuestion']['id']+1;
         header("location:../membres/creerQuestion.php?idQuizz=".$lastId['id']);
     }catch(Exception $e){

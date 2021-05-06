@@ -5,7 +5,7 @@ print_r($_SESSION['compteur']);
 
 if(isset($idQuizz) && !empty($idQuizz) && $_SESSION['compteur']==$_SESSION['idPQuestion']['id']+1){
     ?>
-    <h1 class="text-center"> Modification de la 1ère question du Quizz n°<?=$idQuizz;?></h1>
+    <h1 class="text-center"> Création de la 1ère question du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
     <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php">
     <div style="color: white; font-size: 35px;">
@@ -36,7 +36,7 @@ if(isset($idQuizz) && !empty($idQuizz) && $_SESSION['compteur']==$_SESSION['idPQ
 }
     if(isset($_SESSION['compteur']) && !empty($_SESSION['compteur']) && $_SESSION['compteur']!=$_SESSION['idPQuestion']['id']+1){
     ?>
-    <h1 class="text-center"> Modification de la question <?=$_SESSION['compteur'];?> du Quizz n°<?=$idQuizz;?></h1>
+    <h1 class="text-center"> Creation de la question <?=$_SESSION['compteur'];?> du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
     <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=<?=$_SESSION['compteur'];?>">
     <div style="color: white; font-size: 35px;">

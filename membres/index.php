@@ -4,6 +4,7 @@ require_once '../modeles/Quizz.php';
 $Q = new Quizz();
 $Quizzs = $Q->getAllQuizz();
 
+$_SESSION['Score'] = 0;
 
 if(isset($_SESSION['idQuestion']))
 {

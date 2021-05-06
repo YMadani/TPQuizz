@@ -3,8 +3,6 @@ require_once 'entete.php';
 
 $idQuizz = $_GET['idQuizz'];
 
-
-
 $quizz = new Quizz($idQuizz);
 
 if(!isset($_SESSION['idQuestion']))
