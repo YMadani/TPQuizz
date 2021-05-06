@@ -27,14 +27,14 @@ if(isset($_SESSION['compteur']))
       <?php
     }
     ?>
-    <h1 class="text-center">Bienvenue sur Quizz Mania!</h1>
-  <h3 class="text-center">Les Nouveaux Quizz:</h3>
-      <div class="container text-center">
+    <h1 class="text-center " style=" font-family: Fredoka One, sans-serif;text-transform: uppercase;color: white;font-weight:300 ">Bienvenue sur Quizz Mania!</h1>
+  <h3 class="text-center" style="color:white; text-transform:uppercase; font-weight:300">Les Nouveaux Quizz:</h3>
+    <div class="container text-center coolstuff">
       <?php
       foreach($Quizzs as $Quizz){
        $categories = new Categorie($Quizz['idCat']);
        ?>
-          <div class="card scale mb-3">
+          <div class="card scale mb-3 ">
             <div class="row g-0">
               <div class="col-md-4 imgdiv">
                 <img src="images/quizz.png">
@@ -53,7 +53,7 @@ if(isset($_SESSION['compteur']))
           <?php
           }
           ?>
-      </div>
+    </div>
       
       <?php 
 require_once 'footer.php';

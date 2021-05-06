@@ -95,3 +95,15 @@ aside.active{
 {
   display: block!important;
 }
+.coolstuff .card:nth-child(2n)
+{
+  background-color: #f8b334;
+}
+.coolstuff .card:nth-child(2n+1)
+{
+ background-color: #97bf0d;
+}
+.coolstuff .card:nth-child(3n)
+{
+ background-color: #cb2025;
+}
