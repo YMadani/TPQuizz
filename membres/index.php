@@ -5,7 +5,16 @@ $Q = new Quizz();
 $Quizzs = $Q->getAllQuizz();
 
 
-$_SESSION['idQuestion'] = 1;
+if(isset($_SESSION['idQuestion']))
+{
+  unset($_SESSION['idQuestion']);
+}
+
+if(isset($_SESSION['compteur']))
+{
+  unset($_SESSION['compteur']);
+}
+
   ?>
 
 

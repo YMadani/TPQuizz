@@ -21,7 +21,3 @@ var formConnexion = document.getElementById('formConnexion');
     getQsecrete.classList.add('show');
     getQsecrete.classList.remove('planque');
 }
-function incrementeri()
-{
-    i++
-}

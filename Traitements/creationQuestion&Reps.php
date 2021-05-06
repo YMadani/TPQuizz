@@ -3,7 +3,7 @@
 extract($_POST);
 $quizz = new Quizz();
 $reponses = new Question();
-$i=$_GET['idQuestion'];
+$_SESSION['compteur'];
 $idQuizz = $_POST['idQuizz'];
 $vrai = 1;
 
@@ -14,16 +14,16 @@ isset($reponse3) && !empty($reponse3) &&
 isset($reponse4) && !empty($reponse4) &&
 isset($idQuizz) && !empty($idQuizz)){
     try{
-        if($i<10){
-        $quizz->addQuestion($nomQuestion,$i);
-        $reponses->addReponseVrai($reponse1, $vrai, $i);
-        $reponses->addReponse($reponse2, $i);
-        $reponses->addReponse($reponse3, $i);
-        $reponses->addReponse($reponse4, $i);
-        $i++;
-        header("location:../membres/creerQuestion.php?idQuestion=".$i."&idQuizz=".$idQuizz);
+        if($_SESSION['compteur']<$_SESSION['idPQuestion']['id']+9){
+        $quizz->addQuestion($nomQuestion,$idQuizz);
+        $reponses->addReponseVrai($reponse1, $vrai, $_SESSION['compteur']);
+        $reponses->addReponse($reponse2, $_SESSION['compteur']);
+        $reponses->addReponse($reponse3, $_SESSION['compteur']);
+        $reponses->addReponse($reponse4, $_SESSION['compteur']);
+        $_SESSION['compteur']+=1;
+        header("location:../membres/creerQuestion.php?idQuizz=".$idQuizz);
         }else{
-            header('location:creationQuizz.php?idQuestion='.$i);
+            header('location:creationQuizz.php?idQuestion='.$_SESSION['compteur']);
         }
     }catch (Exception $e){
         ?>

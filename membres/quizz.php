@@ -3,16 +3,23 @@ require_once 'entete.php';
 
 $idQuizz = $_GET['idQuizz'];
 
-$idQuestion = $_SESSION['idQuestion'];
+
 
 $quizz = new Quizz($idQuizz);
 
+if(!isset($_SESSION['idQuestion']))
+{
+    $_SESSION['idQuestion'] = $quizz->recupMiniIdQuestion($idQuizz);
+    $_SESSION['tour'] = $quizz->recupMiniIdQuestion($idQuizz);
+}
+
+$idQuestion = $_SESSION['idQuestion']['id'];
+print_r($idQuestion);
 $question = new Question($idQuestion);
 
 $nomQuizz = $quizz->getQuizz();
 
-$nomQuestion = $question->getQuestion()
-
+$nomQuestion = $question->getQuestion();
 ?>
 
 <h1 style="text-align:center; font-size:115px"><?=$nomQuizz;?></h1>

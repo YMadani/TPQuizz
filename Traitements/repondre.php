@@ -14,9 +14,9 @@ foreach($_POST as $key=>$value){
     echo $value;
 }
 
-if(!empty($_POST) && $_SESSION['idQuestion'] < 10){
-    $reponse->repondre($idUser, $_SESSION['idQuestion'], $value);
-    $_SESSION['idQuestion'] = $_SESSION['idQuestion'] + 1;
+if(!empty($_POST) && $_SESSION['idQuestion']['id'] < $_SESSION['tour']['id']+10){
+    $reponse->repondre($idUser, $_SESSION['idQuestion']['id'], $value);
+    $_SESSION['idQuestion']['id'] = $_SESSION['idQuestion']['id'] + 1;
 
     header('location:../membres/quizz.php?idQuizz='.$idQuizz);
 }else{
