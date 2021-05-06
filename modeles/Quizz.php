@@ -17,7 +17,7 @@ class Quizz extends modeles
                 $requete->execute([$idQuizz]);
                 $quizz = $requete->fetch(PDO::FETCH_ASSOC);
 
-                $requete = $this->getBdd()->prepare("SELECT * FROM questions WHERE idQuizz = ?");
+                $requete = $this->getBdd()->prepare("SELECT * FROM questions WHERE idQuizz = ? ORDER BY RAND()");
                 $requete->execute([$idQuizz]);
                 $questions = $requete->fetchAll(PDO::FETCH_ASSOC);
 
@@ -134,5 +134,23 @@ class Quizz extends modeles
             $requete=$this->getBdd()->prepare('SELECT MAX(idQuestion) as id FROM questions WHERE idQuizz = ?');
             $requete->execute([$idQuizz]);
             return $requete->fetch(PDO::FETCH_ASSOC);
+        }
+        public function quizzAttente()
+        {
+            $Statut = 0;
+            $requete=$this->getBdd()->prepare('SELECT * FROM quizz WHERE Statut = ?');
+            $requete->execute([$Statut]);
+            return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
+        public function quizzApprouve($idQuizz)
+        {
+            $Statut = 1;
+            $requete=$this->getBdd()->prepare('UPDATE quizz SET Statut = ? WHERE idQuizz = ?');
+            $requete->execute([$Statut, $idQuizz]);
+        }
+        public function suppressionQuizz($idQuizz)
+        {
+            $requete=$this->getBdd()->prepare('DELETE FROM quizz WHERE idQuizz = ?');
+            $requete->execute([$idQuizz]);
         }
     }

@@ -15,7 +15,7 @@ public function __construct($idQuestion = null)
         $LaQuestion = $requete->fetch(PDO::FETCH_ASSOC);
 
 
-        $requete = $this->getBdd()->prepare("SELECT * FROM reponses WHERE idQuestion = ?");
+        $requete = $this->getBdd()->prepare("SELECT * FROM reponses WHERE idQuestion = ? ORDER BY RAND()");
         $requete->execute([$idQuestion]);
         $reponses = $requete->fetchAll(PDO::FETCH_ASSOC);
 

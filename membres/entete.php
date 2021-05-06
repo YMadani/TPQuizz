@@ -45,6 +45,11 @@ require_once '../modeles/modeles.php';
           </form>
         <?php 
         }else{
+          if($_SESSION['idRole'] == 2){
+            ?>
+            <a class="btn btn-success" href="verifQuizz.php">Vérification des Quizz</a><br>
+            <?php
+          }
           ?>
           <a class="btn btn-success" href="connexion.php">Connexion</a><br>
          <a class="btn btn-primary mx-1" href="inscription.php">Inscription</a>

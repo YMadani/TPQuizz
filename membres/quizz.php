@@ -12,7 +12,6 @@ if(!isset($_SESSION['idQuestion']))
 }
 
 $idQuestion = $_SESSION['idQuestion']['id'];
-print_r($idQuestion);
 $question = new Question($idQuestion);
 
 $nomQuizz = $quizz->getQuizz();
