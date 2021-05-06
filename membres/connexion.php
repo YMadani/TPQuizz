@@ -3,7 +3,7 @@
   if(isset($_GET["success"])&& $_GET['success'] == 1 ){
     ?>
         <div class="alert alert-success">
-            Bonjour  <?=$_SESSION['Pseudo'];?> , vous êtes bien connecté, vous allez être redirigé vers la page d'acceuil<br> 
+            Bonjour  <?=$_SESSION['Pseudo'];?> , vous êtes bien connecté, vous allez être redirigé vers la page d'accueil<br> 
         </div>
       <?php
       header("refresh:6;index.php");  
@@ -35,7 +35,7 @@
    {
      ?>
      <div class="alert alert-success">
-         ren,seignez tt les champs pour changer de mdp
+         Renseignez touts les champs pour changer de mdp
      </div>
    <?php
     }else if(isset($_GET["success"])&& $_GET['success'] == 5)
@@ -69,7 +69,6 @@
       </form>
 
   </div>
-<<<<<<< HEAD
   <div class="container planque" id="Qsecrete">
 
       <form class="my-3" method="post" action="../Traitements/recupmdp.php" style="width: 35%; margin-left:33%;">
@@ -80,7 +79,7 @@
           <label for="email" class="pseudo fs-4">Email</label>
           <input type="email" name="email" class="form-control"  placeholder="Entrez votre pseudonyme">
         
-        <button type="submit" class="btn btn-success my-3" style="margin-left: 40%;">Récuperer mot de passe</button>
+        <button type="submit" class="btn btn-success my-3" style="margin-left: 31%;">Récuperer mot de passe</button>
 
       </form>
 
@@ -88,7 +87,3 @@
   <?php 
 require_once 'footer.php';
 ?>
-=======
-
-  <?php require_once 'footer.php'?>
->>>>>>> refs/remotes/origin/main

@@ -15,7 +15,7 @@ isset($reponse4) && !empty($reponse4) &&
 isset($idQuizz) && !empty($idQuizz)){
     try{
         if($i<10){
-        $quizz->addQuestion($nomQuestion,$i);
+        $quizz->addQuestion($nomQuestion,$idQuizz);
         $reponses->addReponseVrai($reponse1, $vrai, $i);
         $reponses->addReponse($reponse2, $i);
         $reponses->addReponse($reponse3, $i);

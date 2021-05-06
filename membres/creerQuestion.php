@@ -4,7 +4,7 @@ $idQuizz = $_GET['idQuizz'];
 
 if(isset($idQuizz) && !empty($idQuizz) && $_GET['idQuestion']==1){
     ?>
-    <h1 class="text-center"> Modification de la 1ère question du Quizz n°<?=$idQuizz;?></h1>
+    <h1 class="text-center"> Création de la 1ère question du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
     <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=1">
     <div style="color: white; font-size: 35px;">
@@ -35,7 +35,7 @@ if(isset($idQuizz) && !empty($idQuizz) && $_GET['idQuestion']==1){
 }
     if(isset($_GET['idQuestion']) && !empty($_GET['idQuestion']) && $_GET['idQuestion']!=1){
     ?>
-    <h1 class="text-center"> Modification de la question <?=$_GET['idQuestion'];?> du Quizz n°<?=$idQuizz;?></h1>
+    <h1 class="text-center"> Création de la question <?=$_GET['idQuestion'];?> du Quizz n°<?=$idQuizz;?></h1>
     <div class="container text-center">
     <form method="POST" class="form-group" action="../Traitements/creationQuestion&Reps.php?idQuestion=<?=$_GET['idQuestion'];?>">
     <div style="color: white; font-size: 35px;">

@@ -3,9 +3,13 @@ require_once 'entete.php';
 
 $idQuizz = $_GET['idQuizz'];
 
-$idQuestion = $_SESSION['idQuestion'];
-
 $quizz = new Quizz($idQuizz);
+
+if(!isset($_SESSION['idQuestion'])){
+    $_SESSION['idQuestion'] = $quizz->recupMiniIdQuestion($idQuizz);
+}
+
+$idQuestion = $_SESSION['idQuestion']['id'];
 
 $question = new Question($idQuestion);
 

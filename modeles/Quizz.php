@@ -107,4 +107,23 @@ class Quizz extends modeles
             $requete->execute([$idUser]);
            return $requete->fetchAll(PDO::FETCH_ASSOC);
         }
+        public function afficherScore($vrai, $idQuizz)
+        {
+            $vrai = 1;
+            $requete=$this->getBdd()->prepare('SELECT * FROM reponses INNER JOIN repondre ON reponses.idReponse = repondre.idReponse INNER JOIN questions ON questions.idQuestion = reponses.idQuestion WHERE Vrai = ? AND idQuizz = ?');
+            $requete->execute([$vrai, $idQuizz]);
+            return $requete->rowCount();
+        }
+        public function recupMiniIdQuestion($idQuizz)
+        {
+            $requete=$this->getBdd()->prepare('SELECT MIN(idQuestion) as id FROM questions WHERE idQuizz = ?');
+            $requete->execute([$idQuizz]);
+            return $requete->fetch(PDO::FETCH_ASSOC);
+        }
+        public function maxidQuestion($idQuizz)
+        {
+            $requete=$this->getBdd()->prepare('SELECT MAX(idQuestion) as id FROM questions WHERE idQuizz = ?');
+            $requete->execute([$idQuizz]);
+            return $requete->fetch(PDO::FETCH_ASSOC);
+        }
     }
